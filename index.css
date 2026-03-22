@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Noto Serif SC", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F8FAFC] text-slate-900 antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .nav-item-active {
+    @apply bg-indigo-50 text-indigo-600 border-indigo-600;
+  }
+  
+  .nav-item-inactive {
+    @apply text-slate-500 hover:bg-slate-50 hover:text-slate-700 border-transparent;
+  }
+}
+
+.markdown-body {
+  @apply font-serif leading-relaxed text-slate-700;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  @apply font-sans font-bold text-slate-900 mt-6 mb-3;
+}
+
+.markdown-body p {
+  @apply mb-4;
+}
+
+.markdown-body ul {
+  @apply list-disc pl-5 mb-4 space-y-2;
+}
+
+.markdown-body strong {
+  @apply font-bold text-indigo-600;
+}
+
+.markdown-body code {
+  @apply font-mono bg-slate-100 px-1.5 py-0.5 rounded text-sm text-pink-600;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300;
+}
