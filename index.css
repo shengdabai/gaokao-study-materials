@@ -9,19 +9,22 @@
 
 @layer base {
   body {
-    @apply bg-[#F8FAFC] text-slate-900 antialiased;
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #020617;
+    color: #f1f5f9;
   }
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
-  }
-  
   .nav-item-active {
     @apply bg-indigo-50 text-indigo-600 border-indigo-600;
   }
-  
+
   .nav-item-inactive {
     @apply text-slate-500 hover:bg-slate-50 hover:text-slate-700 border-transparent;
   }
@@ -51,6 +54,37 @@
   @apply font-mono bg-slate-100 px-1.5 py-0.5 rounded text-sm text-pink-600;
 }
 
+@media (prefers-color-scheme: dark) {
+  .markdown-body {
+    color: #cbd5e1;
+  }
+  .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    color: #f1f5f9;
+  }
+  .markdown-body strong {
+    color: #818cf8;
+  }
+  .markdown-body code {
+    background-color: #1e293b;
+    color: #f472b6;
+  }
+}
+
+/* Loading spinner */
+.loader {
+  border: 3px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 0.8s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -62,4 +96,13 @@
 
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-200 rounded-full hover:bg-slate-300;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background-color: #334155;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #475569;
+  }
 }
