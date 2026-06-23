@@ -87,3 +87,34 @@ npm run lint
 ## Maintainer Notes
 
 Maintained by [Tony Sheng](https://github.com/shengdabai). This README is written as a business-facing handoff: it should help a future collaborator, client, or reviewer understand why the repository exists, how to inspect it, and what must be true before it is reused or shipped.
+
+## 项目结构
+
+```
+gaokao/
+├── index.tsx           # 主应用组件
+├── knowledge-base.ts   # 知识库数据（GetNote 同步）
+├── index.html          # HTML 入口
+├── index.css           # 样式
+├── config.ts           # 科目与标签配置
+├── vite.config.ts      # Vite 构建配置
+├── api/                # 服务端代理接口（analyze / search / status）
+├── components/         # 资料库、错题本等 UI 组件
+└── storage/            # IndexedDB 持久化层
+```
+
+## 🤝 关于与连接
+
+本项目由 **Tony（盛）** 开发维护。Tony 是一名中文培训师，累计服务 6000+ 学员，长期用 AI 打造中文教学与备考工具，希望让更多考生用得上、用得起好工具。
+
+如果这个项目对你有帮助，欢迎 ⭐ Star 支持，也欢迎关注我的 GitHub [@shengdabai](https://github.com/shengdabai)。
+
+### 相关项目
+
+- [gaokao-600](https://github.com/shengdabai/gaokao-600) —— 高考冲刺逆袭计划
+- [gaokao-review](https://github.com/shengdabai/gaokao-review) —— 高考复习
+- [gaokao-assistant](https://github.com/shengdabai/gaokao-assistant) —— 高考助手
+
+## License
+
+MIT License — 见根目录 [LICENSE](./LICENSE) 文件。

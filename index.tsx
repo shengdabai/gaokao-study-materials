@@ -79,7 +79,7 @@ const App = () => {
       const data = await response.json();
       setHasApiKey(Boolean(data.aiConfigured));
     } catch (e) {
-      console.error("Error checking server config:", e);
+      if (import.meta.env.DEV) console.error("Error checking server config:", e);
       setHasApiKey(false);
     }
   };
@@ -95,14 +95,14 @@ const App = () => {
 
       const savedHistory = localStorage.getItem("app_search_history");
       if (savedHistory) {
-        try { setSearchHistory(JSON.parse(savedHistory)); } catch (e) { console.error("Failed to parse search history:", e); }
+        try { setSearchHistory(JSON.parse(savedHistory)); } catch (e) { if (import.meta.env.DEV) console.error("Failed to parse search history:", e); }
       }
 
       try {
         const notebook = await loadNotebook();
         setErrorNotebook(notebook);
       } catch (e) {
-        console.error("Failed to load error notebook:", e);
+        if (import.meta.env.DEV) console.error("Failed to load error notebook:", e);
       }
     };
     init();
@@ -146,7 +146,7 @@ const App = () => {
       await persistNotebook(newNotebook);
       showToast("已成功加入错题本！");
     } catch (e) {
-      console.error("Failed to persist error notebook:", e);
+      if (import.meta.env.DEV) console.error("Failed to persist error notebook:", e);
       showToast("存储失败，请重试");
     }
   };
@@ -163,7 +163,7 @@ const App = () => {
       await persistNotebook(newNotebook);
       showToast("已删除错题记录");
     } catch (e) {
-      console.error("Failed to persist notebook after delete:", e);
+      if (import.meta.env.DEV) console.error("Failed to persist notebook after delete:", e);
       showToast("删除后保存失败，请重试");
     }
     setDeleteConfirmId(null);
@@ -202,7 +202,7 @@ const App = () => {
 
       setAiAnalysis(data.analysis || "无法解析，请重试。");
     } catch (error) {
-      console.error("Analysis failed", error);
+      if (import.meta.env.DEV) console.error("Analysis failed", error);
       const status = (error as Error & { status?: number }).status;
       if (status === 503) {
         setHasApiKey(false);
@@ -236,7 +236,7 @@ const App = () => {
 
       setNoteResults({ ...data.result, source: data.source });
     } catch (e) {
-      console.error("Knowledge base search failed:", e);
+      if (import.meta.env.DEV) console.error("Knowledge base search failed:", e);
       setNoteResults({ error: e instanceof Error ? e.message : "搜索失败，请重试。" });
     } finally {
       setIsSearching(false);
